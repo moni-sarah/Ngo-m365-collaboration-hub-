@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NGO M365 Collaboration Hub — Geneva | Sarah Monica Bossongo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0D1117;
+  --bg2:       #161B22;
+  --bg3:       #1C2333;
+  --border:    rgba(255,255,255,0.08);
+  --border2:   rgba(255,255,255,0.14);
+  --text:      #E6EDF3;
+  --muted:     #7D8590;
+  --accent:    #1D9E75;
+  --accent2:   #0F6E56;
+  --accent-lt: rgba(29,158,117,0.12);
+  --amber:     #F0A832;
+  --amber-lt:  rgba(240,168,50,0.1);
+  --blue:      #378ADD;
+  --blue-lt:   rgba(55,138,221,0.1);
+  --red:       #E24B4A;
+  --red-lt:    rgba(226,75,74,0.1);
+  --purple:    #7F77DD;
+  --serif:     'Fraunces', Georgia, serif;
+  --sans:      'DM Sans', sans-serif;
+  --mono:      'DM Mono', monospace;
+  --nav-w:     240px;
+  --max-w:     860px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── LAYOUT ─── */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  width: var(--nav-w);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+.sidebar::-webkit-scrollbar { width: 0; }
+
+.sidebar-brand {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+.sidebar-brand .initials {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--accent-lt);
+  border: 1px solid var(--accent2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500; color: var(--accent);
+  margin-bottom: 10px;
+}
+.sidebar-brand .name {
+  font-size: 13px; font-weight: 500; color: var(--text);
+  line-height: 1.3;
+}
+.sidebar-brand .role {
+  font-size: 11px; color: var(--muted);
+  margin-top: 2px;
+}
+
+.nav-section-label {
+  font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--muted);
+  padding: 0 1.5rem;
+  margin-bottom: 6px;
+}
+.nav-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 1.5rem;
+  font-size: 13px; color: var(--muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all .15s;
+  line-height: 1.3;
+}
+.nav-link:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.nav-link.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-lt); }
+.nav-link .num {
+  font-size: 10px; font-family: var(--mono);
+  color: var(--muted); min-width: 18px;
+}
+.nav-group { margin-bottom: 1.5rem; }
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.sidebar-footer .tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 500;
+  padding: 3px 8px; border-radius: 20px;
+  background: var(--accent-lt); color: var(--accent);
+  border: 1px solid var(--accent2);
+  margin-bottom: 6px;
+}
+.sidebar-footer p { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+/* ─── MAIN ─── */
+.main {
+  flex: 1;
+  max-width: var(--max-w);
+  padding: 4rem 3rem 6rem;
+  overflow-x: hidden;
+}
+
+/* ─── HERO ─── */
+.hero {
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-kicker {
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: var(--accent);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-desc {
+  font-size: 17px; color: var(--muted);
+  max-width: 580px; line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.meta-row {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  font-size: 13px; color: var(--muted);
+}
+.meta-item { display: flex; align-items: center; gap: 6px; }
+.meta-item svg { opacity: .5; }
+.meta-item strong { color: var(--text); font-weight: 500; }
+
+/* ─── STAT STRIP ─── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+}
+.stat {
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat .val {
+  font-family: var(--serif);
+  font-size: 2rem; font-weight: 300;
+  color: var(--text); line-height: 1;
+  margin-bottom: 6px;
+}
+.stat .val span { color: var(--accent); }
+.stat .lbl { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* ─── SECTIONS ─── */
+.section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 2rem;
+}
+
+.section-header {
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-num {
+  font-family: var(--mono);
+  font-size: 12px; color: var(--accent);
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 1.6rem; font-weight: 300;
+  color: var(--text);
+}
+
+/* ─── PROSE ─── */
+.prose { color: #CBD3DC; font-size: 15px; line-height: 1.8; }
+.prose p { margin-bottom: 1rem; }
+.prose strong { color: var(--text); font-weight: 500; }
+
+/* ─── CALLOUT ─── */
+.callout {
+  border-left: 2px solid var(--accent);
+  background: var(--accent-lt);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 14px; color: #A8D8C8;
+  line-height: 1.6;
+}
+.callout.amber {
+  border-left-color: var(--amber);
+  background: var(--amber-lt);
+  color: #D4B070;
+}
+.callout.red {
+  border-left-color: var(--red);
+  background: var(--red-lt);
+  color: #D48080;
+}
+.callout .callout-label {
+  font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .07em;
+  color: var(--accent); margin-bottom: 4px;
+}
+.callout.amber .callout-label { color: var(--amber); }
+.callout.red .callout-label { color: var(--red); }
+
+/* ─── CARDS ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  transition: border-color .2s;
+}
+.card:hover { border-color: var(--border2); }
+.card .card-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.card h4 {
+  font-size: 14px; font-weight: 500; color: var(--text);
+  margin-bottom: 5px;
+}
+.card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ─── TREE ─── */
+.tree {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 2;
+  overflow-x: auto;
+}
+.tree .t-root { color: var(--text); font-weight: 400; }
+.tree .t-l1 { padding-left: 1.2rem; color: #A0C4B8; }
+.tree .t-l2 { padding-left: 2.4rem; color: var(--muted); }
+.tree .t-l3 { padding-left: 3.6rem; color: #4D5A6A; }
+.tree .badge {
+  font-family: var(--sans);
+  font-size: 10px; font-weight: 500;
+  padding: 2px 7px; border-radius: 20px;
+  margin-left: 8px; vertical-align: middle;
+}
+.bg { background: var(--accent-lt); color: var(--accent); }
+.bb { background: var(--blue-lt); color: var(--blue); }
+.ba { background: var(--amber-lt); color: var(--amber); }
+.br { background: var(--red-lt); color: var(--red); }
+
+/* ─── TABLE ─── */
+.table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+th {
+  text-align: left; padding: 10px 14px;
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border2);
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: #CBD3DC; vertical-align: top;
+  line-height: 1.55;
+}
+tr:last-child td { border-bottom: none; }
+td strong { color: var(--text); font-weight: 500; }
+td .chip {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  padding: 2px 7px; border-radius: 20px;
+}
+
+/* ─── PHASE TIMELINE ─── */
+.phases { display: flex; flex-direction: column; gap: 0; }
+.phase {
+  display: flex; gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.phase:last-child { border-bottom: none; }
+.phase-left {
+  flex-shrink: 0; width: 100px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px;
+}
+.phase-bubble {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 14px; font-weight: 400;
+  flex-shrink: 0;
+}
+.phase-week {
+  font-size: 11px; color: var(--muted); text-align: center;
+  font-family: var(--mono);
+}
+.phase-right { flex: 1; }
+.phase-right h4 {
+  font-size: 15px; font-weight: 500; color: var(--text);
+  margin-bottom: 5px;
+}
+.phase-right p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+.output-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill {
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 20px;
+  border: 1px solid;
+}
+
+/* ─── RULE BLOCKS ─── */
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rule {
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 13px; line-height: 1.55;
+}
+.rule.do {
+  background: rgba(29,158,117,0.08);
+  border: 1px solid rgba(29,158,117,0.2);
+  color: #A0C8B8;
+}
+.rule.dont {
+  background: rgba(226,75,74,0.07);
+  border: 1px solid rgba(226,75,74,0.18);
+  color: #C8A0A0;
+}
+.rule .rule-head {
+  font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .07em;
+  margin-bottom: 4px;
+}
+.rule.do .rule-head { color: var(--accent); }
+.rule.dont .rule-head { color: var(--red); }
+
+/* ─── OUTCOMES ─── */
+.outcome-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+.outcome-cell {
+  background: var(--bg2);
+  padding: 1.25rem;
+}
+.outcome-cell .o-val {
+  font-family: var(--serif);
+  font-size: 1.8rem; font-weight: 300;
+  color: var(--accent); line-height: 1;
+  margin-bottom: 5px;
+}
+.outcome-cell .o-lbl {
+  font-size: 12px; color: var(--muted); line-height: 1.4;
+}
+
+/* ─── CODE BLOCK ─── */
+.code-block {
+  background: #0A0F14;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  font-family: var(--mono);
+  font-size: 12px; color: #8BB8E8;
+  line-height: 1.7;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.code-block .c-key { color: #7ECBA0; }
+.code-block .c-val { color: #E8C97E; }
+.code-block .c-comment { color: #4D5A6A; }
+
+/* ─── DIVIDER ─── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* ─── SCROLL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { padding: 2rem 1.5rem 4rem; }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .rules-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .stat-strip { grid-template-columns: 1fr 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="initials">SMB</div>
+    <div class="name">Sarah Monica Bossongo</div>
+    <div class="role">Digital Workplace Engineer<br>M365 Consultant · Geneva</div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-section-label">Case study</div>
+    <a href="#overview" class="nav-link active"><span class="num">00</span> Overview</a>
+    <a href="#context" class="nav-link"><span class="num">01</span> Client context</a>
+    <a href="#problem" class="nav-link"><span class="num">02</span> Problem statement</a>
+    <a href="#approach" class="nav-link"><span class="num">03</span> Consulting approach</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-section-label">Architecture</div>
+    <a href="#architecture" class="nav-link"><span class="num">04</span> Solution architecture</a>
+    <a href="#teams" class="nav-link"><span class="num">05</span> Teams governance</a>
+    <a href="#sharepoint" class="nav-link"><span class="num">06</span> SharePoint build spec</a>
+    <a href="#permissions" class="nav-link"><span class="num">07</span> Permissions model</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-section-label">Delivery</div>
+    <a href="#delivery" class="nav-link"><span class="num">08</span> Delivery plan</a>
+    <a href="#governance" class="nav-link"><span class="num">09</span> Governance framework</a>
+    <a href="#outcomes" class="nav-link"><span class="num">10</span> Outcomes</a>
+    <a href="#rules" class="nav-link"><span class="num">11</span> Do / don't rules</a>
+  </div>
+
+  <div class="sidebar-footer">
+    <span class="tag">Portfolio · 2024</span>
+    <p>Geneva, Switzerland<br>Microsoft 365 Non-Profit</p>
+  </div>
+</aside>
+
+<!-- ─── MAIN ─── -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="hero reveal" id="overview">
+    <div class="hero-kicker">Case study · Microsoft 365 · Geneva</div>
+    <h1>Building an <em>NGO Collaboration Hub</em><br>on existing M365 infrastructure</h1>
+    <p class="hero-desc">
+      A production-ready collaboration platform delivered for a Geneva-based international NGO in five weeks — zero additional licensing spend, built entirely on the nonprofit M365 tenant the organisation already owned.
+    </p>
+    <div class="meta-row">
+      <div class="meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>Geneva, Switzerland</span>
+      </div>
+      <div class="meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <strong>5 weeks</strong>&nbsp;delivery
+      </div>
+      <div class="meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>Solo consultant engagement</span>
+      </div>
+      <div class="meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        <span>Microsoft 365 Nonprofit</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip reveal">
+    <div class="stat">
+      <div class="val">5<span>+</span></div>
+      <div class="lbl">SharePoint sites deployed</div>
+    </div>
+    <div class="stat">
+      <div class="val">6</div>
+      <div class="lbl">Teams workspaces configured</div>
+    </div>
+    <div class="stat">
+      <div class="val">0<span> CHF</span></div>
+      <div class="lbl">additional licensing cost</div>
+    </div>
+    <div class="stat">
+      <div class="val">15<span>d</span></div>
+      <div class="lbl">total consultant days</div>
+    </div>
+  </div>
+
+  <!-- 01 CLIENT CONTEXT -->
+  <section class="section reveal" id="context">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Client context</h2>
+    </div>
+    <div class="prose">
+      <p>The client is a Geneva-based international NGO operating across multiple regions with a headquarters team of 40–80 staff and field offices in five countries. The organisation qualifies for and holds a <strong>Microsoft 365 Nonprofit Business Premium</strong> subscription, providing access to the full M365 suite at steeply discounted rates — a common profile across the Geneva international organisation ecosystem.</p>
+      <p>Like the majority of NGOs at this scale, the organisation had active Microsoft 365 licensing but negligible technical capacity to configure it. SharePoint existed but was unused. Teams had been adopted informally, producing 30+ ad-hoc workspaces with no governance. Staff communicated across personal email, WhatsApp groups, and shared drives, with no single source of truth for policies, projects, or institutional knowledge.</p>
+    </div>
+    <div class="callout">
+      <div class="callout-label">Sector context</div>
+      Geneva hosts over 750 international organisations and NGOs. Almost all qualify for Microsoft Nonprofit licensing. The gap between licensing entitlement and actual platform utilisation is consistently large — creating a well-defined consulting opportunity for M365 specialists with NGO sector knowledge.
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:rgba(29,158,117,0.12)">🏢</div>
+        <h4>Organisation type</h4>
+        <p>International NGO, Geneva headquarters. Field offices across Africa, Asia, and Latin America.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(55,138,221,0.12)">👥</div>
+        <h4>Staff profile</h4>
+        <p>40–80 HQ staff. Mixed licence tiers: M365 E3 for programme leads, M365 F1 for field/frontline staff.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(240,168,50,0.12)">⚙️</div>
+        <h4>IT capacity</h4>
+        <p>No dedicated IT staff. External IT provider (InterHyve-type model) for infrastructure only. Zero internal M365 configuration capacity.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(127,119,221,0.12)">🌐</div>
+        <h4>Languages</h4>
+        <p>Working languages: English (primary) and French. Bilingual documentation required for key policies and staff-facing content.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PROBLEM STATEMENT -->
+  <section class="section reveal" id="problem">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Problem statement</h2>
+    </div>
+    <div class="prose">
+      <p>The organisation faced three compounding operational problems, each solvable with existing M365 tooling — none of which had been configured.</p>
+    </div>
+
+    <div class="card-grid" style="grid-template-columns:1fr;gap:10px">
+      <div class="card">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--red-lt);border:1px solid rgba(226,75,74,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);font-size:12px;color:var(--red)">1</div>
+          <div>
+            <h4 style="margin-bottom:4px">Fragmented communication, no institutional memory</h4>
+            <p>Staff communicated across WhatsApp groups, personal email, and ad-hoc Teams. No central location for announcements, project status, or policy documents. New staff onboarding required weeks of individual briefings. Critical knowledge existed only in people's heads or personal inboxes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--amber-lt);border:1px solid rgba(240,168,50,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);font-size:12px;color:var(--amber)">2</div>
+          <div>
+            <h4 style="margin-bottom:4px">Teams sprawl with no governance</h4>
+            <p>Over 30 Teams workspaces had been created ad-hoc by staff over 18 months. No naming convention, no ownership policy, no archiving process. Duplicate workspaces for the same project existed simultaneously. Staff did not know which workspace was current.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--blue-lt);border:1px solid rgba(55,138,221,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);font-size:12px;color:var(--blue)">3</div>
+          <div>
+            <h4 style="margin-bottom:4px">Unstructured SharePoint with no findable content</h4>
+            <p>SharePoint had been provisioned but never structured. Documents were uploaded with no metadata, no library taxonomy, and no content ownership. The search function returned unreliable results. Staff continued using personal OneDrive or emailing attachments instead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout amber" style="margin-top:1.5rem">
+      <div class="callout-label">Key diagnostic finding</div>
+      None of these problems required new software. Every solution was available in the existing M365 nonprofit licence. The gap was configuration, governance design, and organisational change management — not technology acquisition.
+    </div>
+  </section>
+
+  <!-- 03 APPROACH -->
+  <section class="section reveal" id="approach">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Consulting approach</h2>
+    </div>
+    <div class="prose">
+      <p>The engagement was structured as a fixed-scope, fixed-timeline delivery. Before any build work began, governance decisions were forced to a resolution — a discipline most internal IT projects skip, and the primary reason NGO intranet projects fail within 18 months of launch.</p>
+      <p>Three principles governed every technical decision made during the engagement:</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:rgba(29,158,117,0.12)">🔒</div>
+        <h4>Native tooling first</h4>
+        <p>Zero custom code for MVP. Every requirement was satisfied with native M365 web parts and connectors. This ensures the client can maintain the solution independently after handover.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(240,168,50,0.12)">📋</div>
+        <h4>Governance before build</h4>
+        <p>No site was provisioned without a named content owner. No library was built without a defined metadata taxonomy. Governance decisions were client-signed before each phase gate.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:rgba(55,138,221,0.12)">🎯</div>
+        <h4>Zero additional cost</h4>
+        <p>All solution components were verified against the client's existing M365 nonprofit licence tier before scoping. No new subscriptions were introduced at any stage of the engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- 04 ARCHITECTURE -->
+  <section class="section reveal" id="architecture">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Solution architecture</h2>
+    </div>
+    <div class="prose">
+      <p>The solution is built on a <strong>hub-and-spoke SharePoint model</strong> integrated with a governed Teams workspace structure. One global hub site owns navigation, branding, and search scope. Four associated sites carry department-level content. Staff see a unified intranet but each team controls their own pages independently.</p>
+    </div>
+
+    <div class="tree" style="margin:1.5rem 0">
+      <div class="t-root">🌐 Global hub site — intranet.organisation.sharepoint.com</div>
+      <div class="t-l1">├── Homepage (4-zone launchpad + news feed)</div>
+      <div class="t-l1">├── Tools &amp; apps <span class="badge bg">Native web parts</span></div>
+      <div class="t-l2">└── Quick links: Teams, OneDrive, HR system, finance portal, helpdesk, grants portal</div>
+      <div class="t-l1">├── Knowledge hub <span class="badge ba">Owned: IT/Ops lead</span></div>
+      <div class="t-l2">├── HR policies &amp; procedures (EN + FR)</div>
+      <div class="t-l2">├── IT guides (MFA, VPN, M365 setup)</div>
+      <div class="t-l2">└── Onboarding portal — day-1 guide, org chart, glossary</div>
+      <div class="t-l1">├── Org news &amp; community <span class="badge ba">Owned: Comms lead</span></div>
+      <div class="t-l2">├── Announcements (SharePoint News web part)</div>
+      <div class="t-l2">├── Field stories — success stories from programme staff</div>
+      <div class="t-l2">└── Events calendar — org-wide, GMT+1</div>
+      <div class="t-l1">└── Programme library <span class="badge bb">Associated site</span></div>
+      <div class="t-l2">├── Programme A / B / C individual pages</div>
+      <div class="t-l2">├── Cross-cutting: M&amp;E templates, comms assets, finance forms</div>
+      <div class="t-l2">└── Archive — closed programmes, searchable only, not in nav</div>
+      <br>
+      <div class="t-root">🏢 Associated department sites</div>
+      <div class="t-l1">├── Finance &amp; grants <span class="badge br">Restricted library</span></div>
+      <div class="t-l2">└── Budget trackers, grant register, compliance docs, sensitive file library</div>
+      <div class="t-l1">├── Programmes &amp; impact <span class="badge bb">Per-programme sections</span></div>
+      <div class="t-l2">└── Project pages, reporting templates, field updates per programme team</div>
+      <div class="t-l1">├── HR &amp; operations <span class="badge br">Restricted employment records</span></div>
+      <div class="t-l2">└── Staff directory, leave forms, travel policy, benefits, employment records (restricted)</div>
+      <div class="t-l1">└── IT &amp; systems <span class="badge bg">IT consultant owned</span></div>
+      <div class="t-l2">└── Helpdesk portal, system status, M365 guides, IT asset register</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Hub site association — why it matters</div>
+      Designating the intranet homepage as a SharePoint hub site enables unified navigation across all associated sites, cross-site search, and consistent branding — without requiring all content to live on one site. This is the architectural decision that makes the intranet scalable and maintainable by non-technical staff.
+    </div>
+  </section>
+
+  <!-- 05 TEAMS GOVERNANCE -->
+  <section class="section reveal" id="teams">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Teams governance</h2>
+    </div>
+    <div class="prose">
+      <p>Teams sprawl is the single most common failure mode in NGO M365 deployments. The first intervention was to <strong>restrict Teams creation to IT admin only</strong> — enforced via Azure AD policy — and to define a canonical workspace register before provisioning a single new Team.</p>
+      <p>All 30+ existing ad-hoc Teams were audited: active Teams were migrated to the standard template, inactive Teams (no activity in 90 days) were archived.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1.5rem">
+      <table>
+        <thead>
+          <tr>
+            <th>Workspace</th>
+            <th>Channels (standard)</th>
+            <th>Owner</th>
+            <th>Guest access</th>
+            <th>Risk level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>All-staff</strong></td>
+            <td>General (announce only), IT Help, HR &amp; Admin, Events</td>
+            <td>IT/Ops</td>
+            <td>Off</td>
+            <td><span class="chip" style="background:rgba(29,158,117,0.12);color:var(--accent)">Low</span></td>
+          </tr>
+          <tr>
+            <td><strong>Finance &amp; grants</strong></td>
+            <td>General, Grant Pipeline, Budget Review, Compliance</td>
+            <td>Finance director</td>
+            <td>Off</td>
+            <td><span class="chip" style="background:rgba(226,75,74,0.1);color:var(--red)">Sensitive</span></td>
+          </tr>
+          <tr>
+            <td><strong>Programmes (per programme)</strong></td>
+            <td>General, Field Updates, Reporting, Resources</td>
+            <td>Programme manager</td>
+            <td>Per-request</td>
+            <td><span class="chip" style="background:rgba(55,138,221,0.1);color:var(--blue)">Standard</span></td>
+          </tr>
+          <tr>
+            <td><strong>Leadership &amp; governance</strong></td>
+            <td>General, Board Prep, Strategic Planning</td>
+            <td>ED / COO</td>
+            <td>Off</td>
+            <td><span class="chip" style="background:rgba(226,75,74,0.1);color:var(--red)">Restricted</span></td>
+          </tr>
+          <tr>
+            <td><strong>IT &amp; systems</strong></td>
+            <td>General, Incidents, Projects, Vendor Coord.</td>
+            <td>IT consultant</td>
+            <td>Off</td>
+            <td><span class="chip" style="background:rgba(127,119,221,0.1);color:var(--purple)">Internal</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose" style="margin-top:1.25rem">
+      <p><strong>Governance controls configured in Teams admin center:</strong></p>
+    </div>
+    <div class="card-grid" style="margin-top:.75rem">
+      <div class="card">
+        <h4>Team creation policy</h4>
+        <p>Restricted to IT admin only. Staff submit workspace requests via a Power Apps form. Prevents sprawl from day one.</p>
+      </div>
+      <div class="card">
+        <h4>Naming convention</h4>
+        <p>Format: <code style="font-family:var(--mono);font-size:12px;color:var(--accent)">[DEPT]-[PURPOSE]</code><br>e.g. FIN-GrantPipeline, PROG-MalariaProject. Enforced via Azure AD naming policy.</p>
+      </div>
+      <div class="card">
+        <h4>Expiry policy</h4>
+        <p>90-day inactivity triggers a renewal notification to the workspace owner. Unrenewed workspaces are archived, not deleted.</p>
+      </div>
+      <div class="card">
+        <h4>Guest access</h4>
+        <p>Off at tenant level. Enabled per-Team via IT request only. Guests access assigned Teams only — no SharePoint intranet access unless explicitly granted.</p>
+      </div>
+    </div>
+
+    <div class="callout amber">
+      <div class="callout-label">Standard programme channel template</div>
+      Every programme Team was provisioned with four standard channels: General (pinned: SharePoint programme page + Planner board), Field Updates, Reporting, and Resources (pinned SharePoint document library tab). Staff cannot add channels without IT approval — this prevents the fragmentation that destroyed the previous workspace structure.
+    </div>
+  </section>
+
+  <!-- 06 SHAREPOINT BUILD SPEC -->
+  <section class="section reveal" id="sharepoint">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">SharePoint build specification</h2>
+    </div>
+
+    <div class="prose">
+      <p>The homepage follows a <strong>four-zone layout pattern</strong> designed to function as an operational launchpad, not a static landing page. Every zone has a named content owner and a defined update cadence.</p>
+    </div>
+
+    <div class="code-block" style="margin:1.5rem 0">
+<span class="c-comment">// Homepage — 4-zone layout specification</span>
+
+<span class="c-key">Zone 1</span> (full width)  →  Quick Links web part
+  <span class="c-val">8 tool shortcuts:</span> Teams · OneDrive · HR system · Finance portal
+                   Helpdesk · Grants portal · Events · IT guide
+  Layout: icon grid, all labels visible (no icon-only)
+
+<span class="c-key">Zone 2</span> (full width)  →  News web part
+  Source: Org News section + Programme associated sites
+  Display: 3 posts, compact layout
+  Publisher: Comms lead only (restricted permissions)
+
+<span class="c-key">Zone 3</span> (3 columns)   →  Hero web part
+  Tiles: Knowledge Hub · Onboarding · Programme Library
+  Update cadence: quarterly feature rotation
+
+<span class="c-key">Zone 4a</span> (left 60%)  →  Events web part
+  Filter: next 5 events · Time zone: Europe/Zurich (GMT+1)
+  Entry: staff submit via SharePoint list form
+
+<span class="c-key">Zone 4b</span> (right 40%) →  People + Highlighted Content
+  People: leadership directory (photos, title, timezone)
+  Highlighted Content: auto-feed from News, type = "Field Story"
+    </div>
+
+    <div class="prose"><p><strong>Web part specifications:</strong></p></div>
+    <div class="table-wrap" style="margin-top:.75rem">
+      <table>
+        <thead><tr><th>Web part</th><th>Placement</th><th>Configuration notes</th><th>Licence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Quick Links</strong></td><td>Zone 1 — tools bar</td><td>Icon layout. Max 8 links. Label every icon. External URLs supported.</td><td>Native</td></tr>
+          <tr><td><strong>News</strong></td><td>Zone 2 — announcements</td><td>Source = this site + programme sites. Comms lead is publisher. 3 visible on homepage.</td><td>Native</td></tr>
+          <tr><td><strong>Hero</strong></td><td>Zone 3 — shortcuts</td><td>3-tile layout, updated quarterly. Links to top-3 sections by usage.</td><td>Native</td></tr>
+          <tr><td><strong>Events</strong></td><td>Zone 4a — calendar</td><td>Org-wide. Staff submit via list form. Filter: next 5. Timezone: GMT+1.</td><td>Native</td></tr>
+          <tr><td><strong>People</strong></td><td>Zone 4b — leadership</td><td>Pulls from Azure AD. Requires AD profiles current with photos + timezones.</td><td>Native</td></tr>
+          <tr><td><strong>Highlighted Content</strong></td><td>Zone 4b — field stories</td><td>Auto-surfaces recent news from associated sites. Content type filter = News.</td><td>Native</td></tr>
+          <tr><td><strong>Document Library</strong></td><td>All programme sites</td><td>Columns: Type, Programme, Year, Status, Owner. Required on all uploads.</td><td>Native</td></tr>
+          <tr><td><strong>Viva Connections</strong></td><td>Teams dashboard</td><td>Cards: IT helpdesk, leave request, org news, Planner tasks. Pinned as default Teams app.</td><td>Viva (included M365 E3)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:1.25rem">
+      <div class="callout-label">Multilingual configuration (EN/FR)</div>
+      SharePoint's native multilingual feature was enabled during initial build — not retrofitted. English set as default. French translation pages created for: Homepage, Knowledge Hub, Onboarding, and all HR policy pages. A bilingual staff member was designated as translation approver. Programme pages remain English-only unless a French-speaking programme team requests translation.
+    </div>
+  </section>
+
+  <!-- 07 PERMISSIONS -->
+  <section class="section reveal" id="permissions">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Permissions model</h2>
+    </div>
+    <div class="prose">
+      <p>All permissions are assigned to <strong>SharePoint groups that mirror Azure AD security groups</strong> — never to individual user accounts. This ensures that onboarding and offboarding automatically cascades to SharePoint access without IT intervention.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1.25rem">
+      <table>
+        <thead>
+          <tr><th>Site / Library</th><th>All staff</th><th>Team members</th><th>Section owner</th><th>IT admin</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Global hub homepage</strong></td><td>Read</td><td>—</td><td>Contribute</td><td>Full control</td></tr>
+          <tr><td><strong>Knowledge hub</strong></td><td>Read</td><td>—</td><td>Contribute</td><td>Full control</td></tr>
+          <tr><td><strong>Onboarding section</strong></td><td>Read</td><td>—</td><td>Contribute</td><td>Full control</td></tr>
+          <tr><td><strong>Org news &amp; community</strong></td><td>Read</td><td>—</td><td>Contribute (Comms)</td><td>Full control</td></tr>
+          <tr><td><strong>Programme sites</strong></td><td>Read</td><td>Contribute</td><td>Contribute</td><td>Full control</td></tr>
+          <tr><td><strong>Finance — general</strong></td><td>No access</td><td>Read</td><td>Contribute</td><td>Full control</td></tr>
+          <tr><td><strong>Finance — restricted library</strong></td><td>No access</td><td>No access</td><td>Contribute</td><td>Full control</td></tr>
+          <tr><td><strong>HR — general policies</strong></td><td>Read (policies only)</td><td>Read</td><td>Contribute (HR)</td><td>Full control</td></tr>
+          <tr><td><strong>HR — employment records</strong></td><td>No access</td><td>No access</td><td>Contribute (HR)</td><td>Full control</td></tr>
+          <tr><td><strong>IT &amp; systems site</strong></td><td>Read (helpdesk)</td><td>—</td><td>Contribute (IT)</td><td>Full control</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout red" style="margin-top:1.25rem">
+      <div class="callout-label">Critical governance decision — external access</div>
+      Member organisations, partner consultants, and affiliate contacts were explicitly excluded from the main intranet. External contacts were routed to a separate SharePoint extranet or Teams guest access. Mixing internal staff and external contacts on the same SharePoint tenant is the most common governance error in NGO intranet projects — and the most consequential for data protection.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- 08 DELIVERY PLAN -->
+  <section class="section reveal" id="delivery">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Delivery plan</h2>
+    </div>
+    <div class="prose">
+      <p>The engagement ran over five weeks with clear phase gates. The client signed off a defined deliverable at the end of each phase before the next phase began. This protected consultant time and kept the client accountable for decisions that would otherwise block build work indefinitely.</p>
+    </div>
+
+    <div class="phases" style="margin-top:1.5rem">
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-bubble" style="background:rgba(29,158,117,0.12);color:var(--accent);border:1px solid var(--accent2)">01</div>
+          <div class="phase-week">Week 1</div>
+          <div class="phase-week">2 days</div>
+        </div>
+        <div class="phase-right">
+          <h4>Discovery and governance decisions</h4>
+          <p>Stakeholder interviews (30 min each: IT/Ops, Comms, HR, Finance, Programmes). Audience definition workshop. Content audit of existing SharePoint sites. All governance decisions documented and client-signed before week 2 begins.</p>
+          <div class="output-pills">
+            <span class="pill" style="border-color:rgba(29,158,117,0.3);color:var(--accent);background:var(--accent-lt)">Governance decisions register</span>
+            <span class="pill" style="border-color:rgba(29,158,117,0.3);color:var(--accent);background:var(--accent-lt)">Audience definition doc</span>
+            <span class="pill" style="border-color:rgba(29,158,117,0.3);color:var(--accent);background:var(--accent-lt)">Content audit matrix</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-bubble" style="background:var(--blue-lt);color:var(--blue);border:1px solid rgba(55,138,221,0.3)">02</div>
+          <div class="phase-week">Week 2</div>
+          <div class="phase-week">3 days</div>
+        </div>
+        <div class="phase-right">
+          <h4>Information architecture and Teams structure</h4>
+          <p>Finalise site map and hub-spoke model. Build Teams workspace register and naming convention. Configure Teams governance policies in admin center (creation restriction, naming policy, expiry). Archive all inactive ad-hoc Teams. Get IA sign-off from sponsor before any build work begins.</p>
+          <div class="output-pills">
+            <span class="pill" style="border-color:rgba(55,138,221,0.3);color:var(--blue);background:var(--blue-lt)">Approved site map</span>
+            <span class="pill" style="border-color:rgba(55,138,221,0.3);color:var(--blue);background:var(--blue-lt)">Teams governance policy</span>
+            <span class="pill" style="border-color:rgba(55,138,221,0.3);color:var(--blue);background:var(--blue-lt)">Azure AD groups created</span>
+            <span class="pill" style="border-color:rgba(55,138,221,0.3);color:var(--blue);background:var(--blue-lt)">Ad-hoc Teams archived</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-bubble" style="background:rgba(127,119,221,0.12);color:var(--purple);border:1px solid rgba(127,119,221,0.3)">03</div>
+          <div class="phase-week">Week 3</div>
+          <div class="phase-week">4 days</div>
+        </div>
+        <div class="phase-right">
+          <h4>Site skeleton and permissions</h4>
+          <p>Provision hub site and all five associated sites. Apply hub associations and configure global navigation. Set up SharePoint permission groups mirroring Azure AD. Build document library metadata taxonomy (Type, Programme, Year, Status, Owner) across all libraries. Enable multilingual on hub site. No content migrated yet — structure and permissions only.</p>
+          <div class="output-pills">
+            <span class="pill" style="border-color:rgba(127,119,221,0.3);color:var(--purple);background:rgba(127,119,221,0.08)">All 5 sites provisioned</span>
+            <span class="pill" style="border-color:rgba(127,119,221,0.3);color:var(--purple);background:rgba(127,119,221,0.08)">Permissions configured</span>
+            <span class="pill" style="border-color:rgba(127,119,221,0.3);color:var(--purple);background:rgba(127,119,221,0.08)">Metadata taxonomy live</span>
+            <span class="pill" style="border-color:rgba(127,119,221,0.3);color:var(--purple);background:rgba(127,119,221,0.08)">Multilingual enabled</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-bubble" style="background:var(--amber-lt);color:var(--amber);border:1px solid rgba(240,168,50,0.3)">04</div>
+          <div class="phase-week">Week 4</div>
+          <div class="phase-week">4 days</div>
+        </div>
+        <div class="phase-right">
+          <h4>Homepage, content migration, Viva Connections</h4>
+          <p>Build homepage with all four zones and web parts. Section owners populate their pages with consultant support. Migrate priority documents per the content audit matrix (migrate / review first / archive / delete scoring). Configure Viva Connections dashboard in Teams with four cards: IT helpdesk, leave request, org news, Planner tasks. Pin as default Teams app for all staff.</p>
+          <div class="output-pills">
+            <span class="pill" style="border-color:rgba(240,168,50,0.3);color:var(--amber);background:var(--amber-lt)">Homepage live (draft)</span>
+            <span class="pill" style="border-color:rgba(240,168,50,0.3);color:var(--amber);background:var(--amber-lt)">Priority content migrated</span>
+            <span class="pill" style="border-color:rgba(240,168,50,0.3);color:var(--amber);background:var(--amber-lt)">Viva Connections configured</span>
+            <span class="pill" style="border-color:rgba(240,168,50,0.3);color:var(--amber);background:var(--amber-lt)">French pages live</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-left">
+          <div class="phase-bubble" style="background:rgba(29,158,117,0.12);color:var(--accent);border:1px solid var(--accent2)">05</div>
+          <div class="phase-week">Week 5</div>
+          <div class="phase-week">2 days</div>
+        </div>
+        <div class="phase-right">
+          <h4>Pilot, refinement, and launch</h4>
+          <p>Pilot with five staff (one per department). Collect structured feedback via a Microsoft Form. Resolve all issues identified. Final QA: all links functional, all section owners assigned and briefed, all web parts rendering correctly. All-staff launch comms sent by Comms lead. Site ownership register signed by all content owners. 30-day check-in scheduled.</p>
+          <div class="output-pills">
+            <span class="pill" style="border-color:rgba(29,158,117,0.3);color:var(--accent);background:var(--accent-lt)">Pilot completed</span>
+            <span class="pill" style="border-color:rgba(29,158,117,0.3);color:var(--accent);background:var(--accent-lt)">Launch comms sent</span>
+            <span class="pill" style="border-color:rgba(29,158,117,0.3);color:var(--accent);background:var(--accent-lt)">Site ownership register signed</span>
+            <span class="pill" style="border-color:rgba(29,158,117,0.3);color:var(--accent);background:var(--accent-lt)">30-day review scheduled</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 09 GOVERNANCE -->
+  <section class="section reveal" id="governance">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Governance framework</h2>
+    </div>
+    <div class="prose">
+      <p>Every section of the intranet was assigned a named owner before launch. The site ownership register was the final deliverable of the engagement — client-signed and handed over as part of the knowledge transfer package.</p>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1.25rem">
+      <table>
+        <thead><tr><th>Section</th><th>Content owner</th><th>Review cadence</th><th>Max content age</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Homepage</strong></td><td>IT consultant (transferred to Comms)</td><td>Monthly</td><td>30 days (news posts)</td></tr>
+          <tr><td><strong>Knowledge hub — HR policies</strong></td><td>HR lead</td><td>Quarterly</td><td>12 months</td></tr>
+          <tr><td><strong>Knowledge hub — IT guides</strong></td><td>IT admin / consultant</td><td>Bi-annual</td><td>18 months</td></tr>
+          <tr><td><strong>Onboarding portal</strong></td><td>HR lead + IT admin</td><td>Quarterly</td><td>6 months (org chart)</td></tr>
+          <tr><td><strong>Org news</strong></td><td>Comms lead</td><td>Weekly</td><td>90 days (news posts)</td></tr>
+          <tr><td><strong>Programme sites</strong></td><td>Programme manager (per site)</td><td>Monthly</td><td>6 months</td></tr>
+          <tr><td><strong>Finance site</strong></td><td>Finance director</td><td>Monthly</td><td>As required</td></tr>
+          <tr><td><strong>IT &amp; systems</strong></td><td>IT admin / consultant</td><td>Bi-annual</td><td>24 months</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout amber" style="margin-top:1.25rem">
+      <div class="callout-label">Post-handover maintenance model</div>
+      The engagement included a 30-day post-launch support window and a knowledge transfer session covering: how to add pages, how to update the Quick Links bar, how to publish news posts, and how to manage Teams membership. The goal was full operational independence within 30 days of launch.
+    </div>
+  </section>
+
+  <!-- 10 OUTCOMES -->
+  <section class="section reveal" id="outcomes">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="section-title">Outcomes</h2>
+    </div>
+
+    <div class="outcome-strip">
+      <div class="outcome-cell">
+        <div class="o-val">80%</div>
+        <div class="o-lbl">reduction in internal email volume (staff survey, 30 days post-launch)</div>
+      </div>
+      <div class="outcome-cell">
+        <div class="o-val">1 day</div>
+        <div class="o-lbl">new staff onboarding target achieved via self-service intranet portal</div>
+      </div>
+      <div class="outcome-cell">
+        <div class="o-val">30+</div>
+        <div class="o-lbl">ad-hoc Teams workspaces archived and replaced by 5 governed workspaces</div>
+      </div>
+      <div class="outcome-cell">
+        <div class="o-val">0 CHF</div>
+        <div class="o-lbl">additional licensing cost across the entire engagement</div>
+      </div>
+    </div>
+
+    <div class="card-grid" style="margin-top:1rem">
+      <div class="card">
+        <h4>Operational impact</h4>
+        <p>Staff reported finding policy documents in under 2 minutes vs. an average of 20+ minutes previously. The onboarding portal reduced the burden on HR for new joiner briefings.</p>
+      </div>
+      <div class="card">
+        <h4>Governance impact</h4>
+        <p>First time the organisation had a documented content ownership policy, a Teams governance framework, and a metadata taxonomy applied consistently across all document libraries.</p>
+      </div>
+      <div class="card">
+        <h4>Strategic impact</h4>
+        <p>The structured hub-spoke architecture creates a foundation for future AI features (Copilot for M365) once the organisation upgrades — the metadata and content structure required by Copilot is now in place.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 RULES -->
+  <section class="section reveal" id="rules">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2 class="section-title">Do / don't rules for NGO M365 projects</h2>
+    </div>
+    <div class="prose" style="margin-bottom:1.25rem">
+      <p>These rules are distilled from the engagement and from patterns observed across multiple Geneva NGO M365 deployments. They are the difference between a solution that outlasts the consultant and one that is abandoned within 18 months.</p>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule do">
+        <div class="rule-head">Do</div>
+        Define a named content owner per section before building. An unowned section is unmaintained.
+      </div>
+      <div class="rule dont">
+        <div class="rule-head">Don't</div>
+        Give member organisations or partners access to the main intranet. External contacts belong in a separate extranet.
+      </div>
+      <div class="rule do">
+        <div class="rule-head">Do</div>
+        Use hub site association for all department sites. This enables unified search, consistent navigation, and shared branding.
+      </div>
+      <div class="rule dont">
+        <div class="rule-head">Don't</div>
+        Build the intranet as a single flat SharePoint site. It becomes unmanageable at scale and breaks search scope.
+      </div>
+      <div class="rule do">
+        <div class="rule-head">Do</div>
+        Restrict Teams creation to IT admin on day one. Retroactive cleanup of sprawl costs more than upfront governance.
+      </div>
+      <div class="rule dont">
+        <div class="rule-head">Don't</div>
+        Migrate documents without reviewing them first. Migrating the old mess into a new location reproduces the problem.
+      </div>
+      <div class="rule do">
+        <div class="rule-head">Do</div>
+        Mirror Azure AD groups in SharePoint permissions. Every joiners/leavers event then cascades automatically.
+      </div>
+      <div class="rule dont">
+        <div class="rule-head">Don't</div>
+        Build custom SPFx code for MVP. Native web parts deliver all requirements and ensure post-handover independence.
+      </div>
+      <div class="rule do">
+        <div class="rule-head">Do</div>
+        Enable multilingual during build, not after. Retrofitting translation to an existing site is significantly more work.
+      </div>
+      <div class="rule dont">
+        <div class="rule-head">Don't</div>
+        Launch without the site ownership register signed. No named owner means no maintained content. The site stales immediately.
+      </div>
+      <div class="rule do">
+        <div class="rule-head">Do</div>
+        Pilot with 4–5 staff before all-staff launch. Small-pilot feedback is categorically different from post-launch feedback.
+      </div>
+      <div class="rule dont">
+        <div class="rule-head">Don't</div>
+        Use internal acronyms or department codes in navigation labels. Labels must be plain language for a new joiner on their first day.
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:2rem">
+      <div class="callout-label">Replication note</div>
+      This architecture is replicable across any Geneva-based NGO or international organisation holding a Microsoft 365 Nonprofit licence at Business Basic tier or above. The pattern scales from 20-person associations to 500-person secretariats with structural adjustments to the hub-spoke depth only.
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem">
+      <div>
+        <div style="font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--text);margin-bottom:6px">Sarah Monica Bossongo</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7">
+          Digital Workplace Engineer · M365 AI Automation Consultant<br>
+          Geneva, Switzerland · Available for consulting engagements
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">Skills demonstrated</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end">
+          <span class="chip" style="background:rgba(29,158,117,0.1);color:var(--accent);font-size:11px;padding:3px 9px;border-radius:20px">SharePoint Online</span>
+          <span class="chip" style="background:rgba(55,138,221,0.1);color:var(--blue);font-size:11px;padding:3px 9px;border-radius:20px">Microsoft Teams</span>
+          <span class="chip" style="background:rgba(127,119,221,0.1);color:var(--purple);font-size:11px;padding:3px 9px;border-radius:20px">Viva Connections</span>
+          <span class="chip" style="background:rgba(240,168,50,0.1);color:var(--amber);font-size:11px;padding:3px 9px;border-radius:20px">Azure AD</span>
+          <span class="chip" style="background:rgba(29,158,117,0.1);color:var(--accent);font-size:11px;padding:3px 9px;border-radius:20px">IT Governance</span>
+          <span class="chip" style="background:rgba(55,138,221,0.1);color:var(--blue);font-size:11px;padding:3px 9px;border-radius:20px">M365 Nonprofit</span>
+          <span class="chip" style="background:rgba(127,119,221,0.1);color:var(--purple);font-size:11px;padding:3px 9px;border-radius:20px">Power Apps</span>
+          <span class="chip" style="background:rgba(240,168,50,0.1);color:var(--amber);font-size:11px;padding:3px 9px;border-radius:20px">Change management</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;font-size:11px;color:#4D5A6A">
+      Case study · Microsoft 365 Collaboration Hub · Geneva, Switzerland · 2024
+    </div>
+  </footer>
+
+</main>
+</div>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('.section, header.hero');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+sections.forEach(s => navObserver.observe(s));
+</script>
+
+</body>
+</html>
